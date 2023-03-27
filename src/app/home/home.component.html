@@ -1,0 +1,29 @@
+<div class="logo"><img src="assets/gaist.png"/></div>
+<h1>Surface Grading Application</h1>
+<div class="left-side">
+      <h3>List of current road recordings</h3>
+      <table class="table-formatting">
+        <tr class="table-row">
+          <td>Road Id</td>
+          <td>SurfaceTypeId</td>
+          <td>Surface Type</td>
+          <td>GradeId</td>
+          <td>Grade</td>
+          <td>&nbsp;</td>
+        </tr>
+      <tr *ngFor="let record of records">
+        <td class="table-cell-width-small">{{record.id}}</td>
+        <td class="table-cell-width-small">{{record.surfaceTypeId}}</td>
+        <td class="table-cell-width"><i>{{getSurfaceTypeName(record.surfaceTypeId)}}</i></td>
+        <td class="table-cell-width-small">{{record.gradeId}}</td>
+        <td class="table-cell-width"><i>{{getGradeNameAndDescription(record.gradeId)}}</i></td>
+        <td class="table-cell-width-small"><button (click)="deleteRecord(record.id)">Delete</button></td>
+      </tr>
+    </table>
+    <button (click)="emptyList()">Empty list</button>
+</div>
+<div class="right-side">
+    <h3>Add new Road Record</h3>
+    <!-- //<app-create-record [existingContact]=records (addcontact)="update($event)"></app-create-record> -->
+    <app-create-record [existingContact]=records (addcontact)="add($event)"></app-create-record>
+</div>  

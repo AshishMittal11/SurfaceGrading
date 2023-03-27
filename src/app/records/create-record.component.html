@@ -1,0 +1,15 @@
+<button *ngIf="!isAdding" (click)="showAddForm()">Add</button>
+<div *ngIf="isAdding">
+    <h4>Create Road</h4>
+    <select [(ngModel)]="newRecord.surfaceTypeId">
+        <option [ngValue]="0" selected>Surface Types</option>
+        <option *ngFor="let surfaceType of surfaceTypes" [ngValue]="surfaceType.id">{{surfaceType.name}}</option>
+    </select>
+    <br><br>
+    <select [(ngModel)]="newRecord.gradeId">
+        <option [ngValue]="0" selected>Grades</option>
+        <option *ngFor="let grade of grades" [ngValue]="grade.id">{{grade.name}} | {{grade.description}}</option>
+    </select>
+    <br> <br>
+    <button (click)="submit()" [disabled]="!canSubmit()">Submit</button>
+</div>
